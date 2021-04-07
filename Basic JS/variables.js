@@ -23,4 +23,3 @@ var persona = {
     nombre: "Leo",
     edad: 47
 };
-
