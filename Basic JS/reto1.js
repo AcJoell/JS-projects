@@ -1,3 +1,5 @@
+// PIEDRA PAPEL Y TIJERA CON CONDICIONALES
+
 console.log("1) Piedra | 2) Papel | 3) Tijera");
 
 function jugar(user,pc){

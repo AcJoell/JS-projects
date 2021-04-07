@@ -1,4 +1,4 @@
-
+// PIEDRA PAPEL Y TIJERA CON SWITCH
 
 var win = "You win!";
 var lose = "You lose!";
