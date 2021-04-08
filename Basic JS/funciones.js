@@ -26,8 +26,6 @@ var saludar3 = function(estudiante){
     console.log(`Hola ${estudiante}`);
 }
 
-saludar3("Carlos Andres");
-
 saludar3("Cesar");
 
 function sumar(a,b){

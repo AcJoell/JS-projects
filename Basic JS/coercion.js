@@ -3,7 +3,7 @@
 
 console.log("\nCOERCION IMPLICITA\n");
 
-// El mas sirve para concatenaer <> valores
+// El + sirve para concatenaer <> valores
 
 var a = 4 + "7";
 console.log("A es "+ a +" = "+ typeof a);

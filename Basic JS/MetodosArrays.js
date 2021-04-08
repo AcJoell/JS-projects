@@ -84,7 +84,7 @@ console.log(array2);
 
 //
 var articulos = [1,2,3,4,5];
-articulos.splice(2, 1); 
+articulos.splice(2, 1);
 //el primer parámetro especifica el índice del elemento que quiero eliminar, en este caso es moto
 //y el segundo parámetro especifica cuantos elementos del arreglo quiero eliminar, en este caso solo uno que es moto
 console.log(articulos);

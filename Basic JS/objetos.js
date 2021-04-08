@@ -29,6 +29,6 @@ function fillAuto(marca,modelo,annio,asientos){
     this.asientos = asientos;
 }
 
-var newAuto = new  fillAuto("Tesla","Model 3",2021,5);
+var newAuto  = new fillAuto("Tesla","Model 3",2021,5);
 var newAuto2 = new fillAuto("Tesla","Model x",2019,6);
 var newAuto3 = new fillAuto("Renault","Logan",2021,6);

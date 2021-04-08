@@ -1,5 +1,5 @@
-// EMASCRIPT >=5 Hositing solo sirve con function y var
-// EMASCRIPT <5 Hositing sirve con function, var, let y const
+// EMASCRIPT <=5 Hositing solo sirve con function y var
+// EMASCRIPT >5 Hositing sirve con function, var, let y const
 
 //----------------------
 console.log(miNombre);

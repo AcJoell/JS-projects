@@ -12,4 +12,3 @@ switch (num) {
     default:
         console.log("No soy nada");
 }
-
