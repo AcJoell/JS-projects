@@ -24,3 +24,25 @@ function printNameMayus3(persona){
 }
 
 printNameMayus3(joel);
+
+function cumpleanos(persona){
+    persona.edad+=1;
+}
+
+cumpleanos(joel);
+console.log(joel.edad);
+
+// Devolver un nuevo objeto (Herencia basica)
+// no se altera el objeto principal
+
+function cumpleanos(persona){
+    return {
+        ...persona,
+        edad: persona.edad + 1
+    };
+};
+
+cumpleanos(joel);
+console.log(joel);
+var joelMasViejo = cumpleanos(joel);
+console.log(joelMasViejo);
