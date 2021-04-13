@@ -38,11 +38,11 @@ var paula = {
 joel == paula // false
 joel === paula 
 paula.nombre = 'Jaime'
-joel; // Joel
-paula; // Jaime
+joel.nombre; // Joel
+paula.nombre; // Jaime
 
 // --------------------------
-
+// Objeto literal (too)
 var stiven = {
     nombre: 'Stiven'
 }
@@ -54,5 +54,5 @@ var aleja = stiven;
 stiven; // Stiven 
 aleja; // Stiven
 aleja.nombre = 'Nando';
-stiven; // Nando
-aleja; // Nando
+stiven.nombre; // Nando
+aleja.nombre; // Nando

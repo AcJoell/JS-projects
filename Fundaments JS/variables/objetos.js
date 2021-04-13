@@ -26,7 +26,7 @@ function printNameMayus3(persona){
 printNameMayus3(joel);
 
 function cumpleanos(persona){
-    persona.edad+=1;
+    persona.edad++;
 }
 
 cumpleanos(joel);
@@ -38,11 +38,11 @@ console.log(joel.edad);
 function cumpleanos(persona){
     return {
         ...persona,
-        edad: persona.edad + 1
+           edad: persona.edad + 1
     };
 };
+cumpleanos(joel); // Su edad sube pero no altera la variable global
+console.log(joel); // No ha cambiado nada
 
-cumpleanos(joel);
-console.log(joel);
-var joelMasViejo = cumpleanos(joel);
-console.log(joelMasViejo);
+var joelMasViejo = cumpleanos(joel); // Se guarda en un var el retorno de la funcion
+console.log(joelMasViejo); // La edad cambio, es como una clase hija
