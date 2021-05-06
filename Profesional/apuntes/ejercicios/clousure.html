@@ -7,10 +7,18 @@
     <title>Document</title>
   </head>
   <body>
-    <a href="/ejercicios/">Go back</a>
+    <a href="../ejercicios">Go back</a>
+    
     <p><em>Abre la consola</em></p>
 
+    <h2>
+      Ver las notas en la carpeta anterior a esta (carpeta => apuntes) "../CLOUSURE.md"
+    </h2>
+
     <script>
+
+      // Funcion que se ejecuta automaticamente
+
       (function () {
         let color = "Green";
         function printColor() {
@@ -19,7 +27,8 @@
         printColor();
       })(); // al final se pone () para que se ejecute
 
-      // ----------------------------------------------
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+
       // funciones que regresan funciones
 
       function makeColorPrinter(color) {
@@ -35,7 +44,8 @@
 
       console.log(greenColorPrinter());
 
-      // ----------------------------------------------
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+      
       // Variables "privadas"
       /*
         El valor no se puede leer directamente o modificar

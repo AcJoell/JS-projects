@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../ejercicios">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <h2>
+      <code>this</code> se refiere a un objeto. Ese objeto es el que actualmente
+      esta ejecutando un pedazo de codigo
+    </h2>
+
+    <h2>
+        Ver las notas en la carpeta anterior a esta (carpeta => apuntes) "../THIS.md"
+    </h2>
+
+    <script>
+      
+      // THIS en el scope global:
+      console.log(`this: ${this}`); // this: {object Window}
+
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+
+      // THIS en el scope de una funcion:
+      function whoIsThis() {
+        return this;
+      }
+      console.log(`whotIsThis(): ${whoIsThis()}`); // whotIsThis(): {object Window}
+
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+
+      // THIS  en el scope de una funcion en MODO ESTRICTO:
+
+      function whoIsThisStrict() {
+        "use strict";
+        return this;
+      }
+      console.log(`whoIsThisStrict(): ${whoIsThisStrict()}`); // undefined
+      
+      // "use strict"; sirve para activar el modo estricto
+
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+
+      // THIS en el contexto de un objeto
+      
+      const person = {
+        name: "Juan",
+        saludar: function () {
+          console.log(`Hola, soy ${this.name}`);
+        },
+      };
+
+      person.saludar();
+
+      const accion = person.saludar; // asignamos en el scope global por lo tal this no recogera el valor de name
+
+      accion(); // Hola, soy
+
+      // ----   ----   ----   ----   ----   ----   ----   ----   ----
+
+      // THIS en el contexto de una "clase"
+
+      function Person(nombre, edad) {
+        this.nombre = nombre; // es igual que; this = {} (un objeto vacio)
+        this.edad = edad;
+      }
+
+      // una manera de hacer un metodo es a traves de su prototype
+      Person.prototype.saludar = function () {
+          console.log(`Me llamo ${this.nombre} y tengo ${this.edad} años`);
+      }
+
+      const laura = new Person('Laura',19);
+      laura.saludar(); // Me llamo Laura y tengo 19 años
+
+    </script>
+  </body>
+</html>
