@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../ejercicios">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      function Hero(name, type) {
+        this.name = name;
+        this.type = type;
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`New: Me llamo ${this.name} y me gusta ser ${this.type}`);
+      };
+
+      const cypher = new Hero("Cypher", "Centinela");
+      const reyna = new Hero("Reyna", "Duelista");
+
+      console.log(`Nombre: ${cypher.name}\nTipo: ${cypher.type}`);
+      console.log(`Saludar: ${cypher.saludar}`);
+      console.log(`toString: ${cypher.toString}`);
+
+      // hasOwnPrperty sirve para inspeccionar si algo le pertece directamente a un objeto o si lo toma prestado por Herencia
+      console.log(
+        `cypher.hasOwnProperty('name'): ${cypher.hasOwnProperty("name")}`
+      ); // true
+      console.log(
+        `cypher.hasOwnProperty('name'): ${cypher.hasOwnProperty("saludar")}`
+      ); // false
+
+      // Object.getPrototypeOf(name) nos va a regresar el prototype padre del objeto que le pasamos como argumento
+      // al guardarlo, van a ser exactamente el mismo, tanto en contenido como en memoria
+      const prototypeOfCypher = Object.getPrototypeOf(cypher);
+      console.log(prototypeOfCypher === Hero.prototype); // true
+      console.log(prototypeOfCypher === cypher); // false
+
+      // es decir, que podriamos hacer...
+
+      prototypeOfCypher.fight = function () {
+        console.log("Fight!");
+      };
+
+      cypher.fight(); // Fight!
+
+      // o ...
+
+      // __proto__ hace referencia al prototipo del padre de cypher (Hero.prototype)
+      cypher.__proto__.sleep = function () {console.log(`(I´m ${this.name} and I´m sleeping) zzz zzz`)}
+      cypher.sleep(); // (I´m Cypher and I´m sleeping) zzz zzz
+      reyna.sleep();  // (I´m Reyna and I´m sleeping) zzz zzz
+
+      // CONCLUSIÓN: no puede haber funcion sin un objeto al cual hacerle prototipeo
+      cypher.hasOwnProperty("fight"); // false
+      __proto__.hasOwnProperty("fight"); // false
+      Hero.prototype.hasOwnProperty("fight"); // true
+      cypher.__proto__.hasOwnProperty("fight"); // true
+
+      // Hero.prototype === cypher.__proto__
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../ejercicios">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de aprender!</button></li>
+    </ul>
+
+    <script>
+      // todas las funciones tienen call, apply y bind ya empaquetadas y listas para usar
+
+      function saludar() {
+        console.log(`Hola, soy ${this.nombre} ${this.apellido}`);
+      }
+
+      function caminar(metros, direccion) {
+        console.log(
+          `${this.nombre} camina ${metros} metros hacia ${direccion}.`
+        );
+      }
+
+      const camilo = {
+        nombre: "Camilo",
+        apellido: "Rodriguez",
+      };
+
+      const daniel = {
+        nombre: "Daniel",
+        apellido: "Martinez",
+      };
+
+      // ----   ----   ---- UTILIZANDO CALL ----   ----   ----
+
+      // el primer argumento que recibimos es el this que queremos establecer (camilo)
+      saludar.call(camilo);
+
+      // cuando tenemos mas argumentos, los pasamos despues de establecer el this
+      caminar.call(camilo, 400, "Norte");
+
+      // ----   ----   ---- UTILIZANDO CALL ----   ----   ----
+
+      // en lugar de pasar metros y direccion con comas,se pasa como parte de un arreglo
+      // y dentro de ese arreglo vamos a poner todos los argumentos a excepcion al establecer el this
+      caminar.apply(camilo, [800, "Noreste"]);
+
+      /*
+        CONCLUSIÓN
+        Call => coma | Apply => arreglo
+      */
+
+      // ----   ----   ---- UTILIZANDO BIND ----   ----   ----
+
+      // construye una nueva funcion con el this integrado ahi
+
+      /*
+      Creamos una nueva funcion, porque si la llamamos asi: saludar.bind(daniel);
+      no nos botaria resultado, por ende la metemos dentro de una funcion y la llamamos
+      */
+
+      const danielSaluda = saludar.bind(daniel);
+      danielSaluda(daniel);
+
+      // Con varios argumentos...
+
+      // forma 1
+      const danielCamina1 = caminar.bind(daniel);
+      danielCamina1(1000, "este");
+
+      // forma 2
+      const danielCamina2 = caminar.bind(daniel, 2000, "sur");
+      danielCamina2();
+
+      // forma 3 - argumentos parciales (podemos poner argumentos tanto cunado la instanciamos o cuando la llamamos)
+      const danielCamina3 = caminar.bind(daniel, 500);
+      danielCamina3("oeste");
+
+      // ----   ----   ---- EJERCICIO DE BOTONES ----   ----   ----
+
+      // 1. Cada vez que le demos click a un boton podamos abrir un alert con un mensaje
+
+      const buttons = document.getElementsByClassName("call-to-action");
+
+      //   // Este ejemplo tiene el error de que... ->
+      //   // Los botones no son una funcion, son un NodeList
+      //   buttons.forEach(action => {
+      //     // por cada click lanzara el alert
+      //     action.onclick = () => alert("Nunca pares de aprender");
+      //   });
+
+      // Llamamos esta funcion 'Array.prototype.forEach' usando 'buttons' como contexto, como el THIS 
+      Array.prototype.forEach.call(buttons, action => {
+        // por cada click lanzara el alert
+        action.onclick = () => alert("Nunca pares de aprender");
+      });
+
+      /*
+      NOTA:
+      Utilizamos forEach debido a que tenemos varios botones almacenados en la clase buttons,
+      entonces, si le dejaramos unicamente 'Array', no funcionaria debido a que
+      no recorreria la longitud de 'buttons'
+      */
+    </script>
+  </body>
+</html>

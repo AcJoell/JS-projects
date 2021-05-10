@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../ejercicios">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // ----   ----   ----   ---- FORMA 1 ( NO TAN EFICIENTE ) ----   ----   ----   ----
+
+      //   function Hero(name, type) {
+      //     const hero = {
+      //       name: name,
+      //       type: type,
+      //     };
+
+      //     hero.saludar = function () {
+      //       console.log(`Hola, soy ${this.name} y soy ${this.type}`);
+      //     };
+
+      //     return hero;
+      //   }
+
+      //   const cypher = Hero("Cypher", "Centinela");
+      //   cypher.saludar();
+
+      //   const reyna = Hero("Reyna", "Duelista");
+      //   reyna.saludar();
+
+      // ----   ----   ----   ---- FORMA 2 ( ACEPTABLE ) ----   ----   ----   ----
+
+      //   const heroMethods = {
+      //       saludar: function() {
+      //             console.log(`Me llamo ${this.name} y soy ${this.type}`);
+      //       }
+      //   }
+
+      //   function Hero(name, type) {
+      //     const hero = {
+      //       name: name,
+      //       type: type,
+      //     };
+
+      //     hero.saludar = heroMethods.saludar;
+      //     return hero;
+      //   }
+
+      //   const cypher = Hero("Cypher", "Centinela");
+      //   cypher.saludar();
+
+      //   const reyna = Hero("Reyna", "Duelista");
+      //   reyna.saludar();
+
+      // ----   ----   ----   ---- FORMA 3 ( MAS ACEPTABLE ) ----   ----   ----   ----
+
+      // Object.create va a recibir unobjeto como argumento (aqui) y va a crear un nuevo objeto
+      // Vamos a heredar todos los atributos y metodos del objeto pasado como argumento
+
+      //   const heroMethods = {
+      //     saludar: function () {
+      //       console.log(`Me llamo ${this.name} y soy ${this.type}`);
+      //     },
+      //   };
+
+      //   function Hero(name, type) {
+      //     // Creamos el objeto y como base llamariamos a los metodos, incluyendolos dentro de heroe
+      //     const heroe = Object.create(heroMethods);
+      //     // recuperamos atributos
+      //     heroe.name = name;
+      //     heroe.type = type;
+
+      //     return heroe;
+      //   }
+
+      //   const cypher = Hero("Cypher", "Centinela");
+      //   cypher.saludar();
+
+      //   const reyna = Hero("Reyna", "Duelista");
+      //   reyna.saludar();
+
+      // ----   ----   ----   ---- FORMA 4 ( MEJOR ) ----   ----   ----   ----
+
+      //   function Hero(name, type) {
+      //     // Creamos el objeto y como base llamariamos a los metodos, incluyendolos dentro de heroe
+      //     const heroe = Object.create(Hero.prototype);
+      //     // recuperamos atributos
+      //     heroe.name = name;
+      //     heroe.type = type;
+
+      //     return heroe;
+      //   }
+
+      //   Hero.prototype.saludar = function () {
+      //     console.log(`Me llamo ${this.name} y me gusta ser ${this.type}`);
+      //   };
+
+      //   const cypher = Hero("Cypher", "Centinela");
+      //   cypher.saludar();
+
+      //   const reyna = Hero("Reyna", "Duelista");
+      //   reyna.saludar();
+
+      // ----   ----   ----   ---- FORMA 4 ( MUCHO MEJOR ) ----   ----   ----   ----
+
+      /*
+      Al usar 'new' podemos omitir 'const heroe = Object.create(Hero.prototype);'
+      siempre lo va a sacar del prototype
+      podriamos imaginar q lo va a guardar en this 'this = Object.create(Hero.prototype);'
+      y asi podriamos crear los metodos que necesitemos
+      */
+
+      function Hero(name, type) {
+        // new es lo mismo que decir: this = Object.create(Hero.prototype);
+        this.name = name;
+        this.type = type;
+        // return this; esto ocurre implicitamente, no hay que hacerlo
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`New: Me llamo ${this.name} y me gusta ser ${this.type}`);
+      };
+
+      const cypher = new Hero("Cypher", "Centinela");
+      cypher.saludar();
+
+      const reyna = new Hero("Reyna", "Duelista");
+      reyna.saludar();
+    </script>
+  </body>
+</html>
